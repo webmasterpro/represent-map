@@ -57,15 +57,15 @@ echo $admin_head;
 
 <div id="admin">
   <h3>
-    <? if($total > $items_per_page) { ?>
-      <?=$page_start+1?>-<? if($page_end > $total) { echo $total; } else { echo $page_end; } ?>
-      of <?=$total?> markers
-    <? } else { ?>
-      <?=$total?> markers
-    <? } ?>
+    <?php if($total > $items_per_page) { ?>
+      <?php=$page_start+1?>-<? if($page_end > $total) { echo $total; } else { echo $page_end; } ?>
+      of <?php=$total?> markers
+    <?php } else { ?>
+      <?php=$total?> markers
+    <?php } ?>
   </h3>
   <ul>
-    <?
+    <?php
       while($place = mysql_fetch_assoc($places)) {
         $place[uri] = str_replace("http://", "", $place[uri]);
         $place[uri] = str_replace("https://", "", $place[uri]);
@@ -108,22 +108,22 @@ echo $admin_head;
     ?>
   </ul>
   
-  <? if($p > 1 || $total >= $items_per_page) { ?>
+  <?php if($p > 1 || $total >= $items_per_page) { ?>
     <ul class="pager">
-      <? if($p > 1) { ?>
+      <?php if($p > 1) { ?>
         <li class="previous">
           <a href="index.php?view=<?=$view?>&search=<?=$search?>&p=<? echo $p-1; ?>">&larr; Previous</a>
         </li>
-      <? } ?>
-      <? if($total >= $items_per_page * $p) { ?>
+      <?php } ?>
+      <?php if($total >= $items_per_page * $p) { ?>
         <li class="next">
-          <a href="index.php?view=<?=$view?>&search=<?=$search?>&p=<? echo $p+1; ?>">Next &rarr;</a>
+          <a href="index.php?view=<?php=$view?>&search=<?php=$search?>&p=<?php echo $p+1; ?>">Next &rarr;</a>
         </li>
-      <? } ?>
+      <?php } ?>
     </ul>
-  <? } ?>
+  <?php } ?>
 
 </div>
 
 
-<? echo $admin_foot ?>
+<?php echo $admin_foot ?>
